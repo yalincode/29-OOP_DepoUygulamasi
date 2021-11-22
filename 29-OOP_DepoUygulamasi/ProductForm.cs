@@ -58,12 +58,22 @@ namespace _29_OOP_DepoUygulamasi
             try
             {
                 Product product = new Product();
+                product.Id = Convert.ToInt32(this.Tag);
                 product.ProductCode = txtProductCode.Text;
                 product.ProductName = txtProductName.Text;
                 product.Price = nudPrice.Value;
                 product.Description = txtAciklama.Text;
 
-                repository.Add(product);
+                if (product.Id==0)
+                {
+                    repository.Add(product);
+                }
+                else
+                {
+                    repository.Update(product);
+                }
+
+                
                 Utility.ShowSuccessMessage("Kayıt başarılı bir şekilde yapıldı.");
                 this.Close();
             }
