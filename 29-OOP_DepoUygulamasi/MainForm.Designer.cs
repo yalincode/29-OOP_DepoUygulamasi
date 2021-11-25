@@ -38,10 +38,13 @@ namespace _29_OOP_DepoUygulamasi
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grdProducs = new System.Windows.Forms.DataGridView();
+            this.grdWarehouse = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProducs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdWarehouse)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -82,6 +85,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnWharehouse.TabIndex = 1;
             this.btnWharehouse.Text = "Depo Tanımı";
             this.btnWharehouse.UseVisualStyleBackColor = true;
+            this.btnWharehouse.Click += new System.EventHandler(this.btnWharehouse_Click);
             // 
             // btnProduct
             // 
@@ -117,10 +121,11 @@ namespace _29_OOP_DepoUygulamasi
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.grdWarehouse);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(424, 343);
+            this.tabPage2.Size = new System.Drawing.Size(509, 406);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Depo Tanımlamaları";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -138,6 +143,19 @@ namespace _29_OOP_DepoUygulamasi
             this.grdProducs.TabIndex = 0;
             this.grdProducs.DoubleClick += new System.EventHandler(this.grdProducs_DoubleClick);
             // 
+            // grdWarehouse
+            // 
+            this.grdWarehouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdWarehouse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdWarehouse.Location = new System.Drawing.Point(3, 3);
+            this.grdWarehouse.MultiSelect = false;
+            this.grdWarehouse.Name = "grdWarehouse";
+            this.grdWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdWarehouse.Size = new System.Drawing.Size(503, 400);
+            this.grdWarehouse.TabIndex = 1;
+            this.grdWarehouse.DoubleClick += new System.EventHandler(this.grdWarehouse_DoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,7 +170,9 @@ namespace _29_OOP_DepoUygulamasi
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdProducs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdWarehouse)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -168,6 +188,7 @@ namespace _29_OOP_DepoUygulamasi
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView grdProducs;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView grdWarehouse;
     }
 }
 

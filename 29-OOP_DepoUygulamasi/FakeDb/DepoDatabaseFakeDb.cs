@@ -14,5 +14,9 @@ namespace _29_OOP_DepoUygulamasi.FakeDb
 
         //Product tablosu
         public static List<Product> products = new List<Product>();
+
+
+        public static int warehouseId = 0;
+        public static List<Warehouse> warehouses = new List<Warehouse>();
     }
 }

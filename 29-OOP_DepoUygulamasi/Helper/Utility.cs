@@ -28,5 +28,17 @@ namespace _29_OOP_DepoUygulamasi.Helper
         {
             MessageBox.Show(message,appName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+
+        /// <summary>
+        /// Yes no şeklinde kullanıcıya mesaj sorulurken kullanılacak.
+        /// </summary>
+        /// <param name="message">Ekranda gösterilmesi istenen mesaj</param>
+        /// <returns></returns>
+        public static DialogResult ShowDialogResultInformationMessage(string message)
+        {
+            DialogResult result = MessageBox.Show(message,appName, MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+            return result;
+        }
     }
 }
