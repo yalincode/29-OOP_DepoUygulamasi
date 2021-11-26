@@ -18,5 +18,12 @@ namespace _29_OOP_DepoUygulamasi.FakeDb
 
         public static int warehouseId = 0;
         public static List<Warehouse> warehouses = new List<Warehouse>();
+
+        public static int fichMasterId = 0;
+        public static int fichDetailId = 0;
+        public static List<FichMaster> fichMasters = new List<FichMaster>();
+
+        public static List<FichDetail> fichDetail = new List<FichDetail>();
+        
     }
 }

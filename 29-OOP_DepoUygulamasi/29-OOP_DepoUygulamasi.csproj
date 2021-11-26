@@ -48,7 +48,11 @@
   <ItemGroup>
     <Compile Include="Core\ConstMessages.cs" />
     <Compile Include="DAL\ProductRepository.cs" />
+    <Compile Include="DAL\FichMasterRepository.cs" />
     <Compile Include="DAL\WarehouseRepository.cs" />
+    <Compile Include="Entities\FichDetail.cs" />
+    <Compile Include="DAL\FichDetailRepository.cs" />
+    <Compile Include="Entities\FichMaster.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Warehouse.cs" />
     <Compile Include="FakeDb\DepoDatabaseFakeDb.cs" />
@@ -67,6 +71,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WarehouseInOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseInOutForm.Designer.cs">
+      <DependentUpon>WarehouseInOutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WharehouseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +98,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WarehouseInOutForm.resx">
+      <DependentUpon>WarehouseInOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WharehouseForm.resx">
       <DependentUpon>WharehouseForm.cs</DependentUpon>
     </EmbeddedResource>
