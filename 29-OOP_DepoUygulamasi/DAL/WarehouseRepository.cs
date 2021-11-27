@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _29_OOP_DepoUygulamasi.DAL
 {
-    class WarehouseRepository
+    public class WarehouseRepository
     {
         public void Add(Warehouse item)
         {

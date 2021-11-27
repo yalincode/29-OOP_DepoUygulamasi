@@ -11,5 +11,10 @@ namespace _29_OOP_DepoUygulamasi.Entities
         public int id { get; set; }
         public string WarehouseName { get; set; }
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            return this.WarehouseName;
+        }
     }
 }

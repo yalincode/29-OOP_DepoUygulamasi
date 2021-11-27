@@ -56,6 +56,7 @@
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Warehouse.cs" />
     <Compile Include="FakeDb\DepoDatabaseFakeDb.cs" />
+    <Compile Include="FakeDb\DummyData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

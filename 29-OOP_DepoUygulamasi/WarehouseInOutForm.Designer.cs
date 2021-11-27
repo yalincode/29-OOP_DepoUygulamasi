@@ -44,7 +44,7 @@ namespace _29_OOP_DepoUygulamasi
             this.label4 = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtVkn = new System.Windows.Forms.TextBox();
+            this.txtTaxNember = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDetailAdd = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -77,7 +77,7 @@ namespace _29_OOP_DepoUygulamasi
             // 
             this.panel2.Controls.Add(this.cmbWarehouseIn);
             this.panel2.Controls.Add(this.cmbWarehouseOut);
-            this.panel2.Controls.Add(this.txtVkn);
+            this.panel2.Controls.Add(this.txtTaxNember);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtCompanyName);
             this.panel2.Controls.Add(this.label5);
@@ -114,6 +114,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnNew.TabIndex = 0;
             this.btnNew.Text = "Yeni";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSave
             // 
@@ -124,6 +125,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Kaydet";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -134,6 +136,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dataGridView1
             // 
@@ -218,13 +221,13 @@ namespace _29_OOP_DepoUygulamasi
             this.label5.TabIndex = 3;
             this.label5.Text = "Firma Adı";
             // 
-            // txtVkn
+            // txtTaxNember
             // 
-            this.txtVkn.Location = new System.Drawing.Point(654, 42);
-            this.txtVkn.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVkn.Name = "txtVkn";
-            this.txtVkn.Size = new System.Drawing.Size(282, 23);
-            this.txtVkn.TabIndex = 6;
+            this.txtTaxNember.Location = new System.Drawing.Point(654, 42);
+            this.txtTaxNember.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTaxNember.Name = "txtTaxNember";
+            this.txtTaxNember.Size = new System.Drawing.Size(282, 23);
+            this.txtTaxNember.TabIndex = 6;
             // 
             // label6
             // 
@@ -286,6 +289,7 @@ namespace _29_OOP_DepoUygulamasi
             // 
             // cmbWarehouseOut
             // 
+            this.cmbWarehouseOut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWarehouseOut.FormattingEnabled = true;
             this.cmbWarehouseOut.Location = new System.Drawing.Point(131, 105);
             this.cmbWarehouseOut.Name = "cmbWarehouseOut";
@@ -294,6 +298,7 @@ namespace _29_OOP_DepoUygulamasi
             // 
             // cmbWarehouseIn
             // 
+            this.cmbWarehouseIn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWarehouseIn.FormattingEnabled = true;
             this.cmbWarehouseIn.Location = new System.Drawing.Point(654, 108);
             this.cmbWarehouseIn.Name = "cmbWarehouseIn";
@@ -312,6 +317,7 @@ namespace _29_OOP_DepoUygulamasi
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "WarehouseInOutForm";
             this.Text = "Depo Giriş Çıkış Formu";
+            this.Load += new System.EventHandler(this.WarehouseInOutForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -332,7 +338,7 @@ namespace _29_OOP_DepoUygulamasi
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox cmbWarehouseIn;
         private System.Windows.Forms.ComboBox cmbWarehouseOut;
-        private System.Windows.Forms.TextBox txtVkn;
+        private System.Windows.Forms.TextBox txtTaxNember;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCompanyName;
         private System.Windows.Forms.Label label5;

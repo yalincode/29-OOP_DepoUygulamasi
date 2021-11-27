@@ -13,12 +13,16 @@ namespace _29_OOP_DepoUygulamasi.Entities
         {
             item.Id = (++DepoDatabaseFakeDb.fichDetailId);
             DepoDatabaseFakeDb.fichDetail.Add(item);
+
         }
-        public FichDetail FindById(int id)
+
+        public FichDetail FindById(int Id)
         {
-            var Dbİtem = DepoDatabaseFakeDb.fichDetail.FirstOrDefault(t0 => t0.Id == id);
-            return Dbİtem;
+            var dbItem = DepoDatabaseFakeDb.fichDetail.FirstOrDefault(t0 => t0.Id == Id);
+            return dbItem;
+
         }
+
         public List<FichDetail> Get()
         {
             return DepoDatabaseFakeDb.fichDetail;
@@ -43,5 +47,7 @@ namespace _29_OOP_DepoUygulamasi.Entities
                 DepoDatabaseFakeDb.fichDetail.Remove(dbItem);
             }
         }
+
     }
 }
+

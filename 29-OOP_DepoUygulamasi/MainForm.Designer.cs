@@ -36,15 +36,19 @@ namespace _29_OOP_DepoUygulamasi
             this.btnProduct = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grdProducs = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grdWarehouse = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.grdWarehouseInOut = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProducs)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdWarehouse)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdWarehouseInOut)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -56,7 +60,7 @@ namespace _29_OOP_DepoUygulamasi
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(517, 78);
+            this.panel1.Size = new System.Drawing.Size(616, 78);
             this.panel1.TabIndex = 0;
             // 
             // btnWharehouseOut
@@ -76,6 +80,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnWharehouseIn.TabIndex = 2;
             this.btnWharehouseIn.Text = "Depo Giriş";
             this.btnWharehouseIn.UseVisualStyleBackColor = true;
+            this.btnWharehouseIn.Click += new System.EventHandler(this.btnWharehouseIn_Click);
             // 
             // btnWharehouse
             // 
@@ -101,11 +106,12 @@ namespace _29_OOP_DepoUygulamasi
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 78);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(517, 432);
+            this.tabControl1.Size = new System.Drawing.Size(616, 432);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -114,21 +120,10 @@ namespace _29_OOP_DepoUygulamasi
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(509, 406);
+            this.tabPage1.Size = new System.Drawing.Size(608, 406);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ürünler";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.grdWarehouse);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(509, 406);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Depo Tanımlamaları";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // grdProducs
             // 
@@ -139,9 +134,20 @@ namespace _29_OOP_DepoUygulamasi
             this.grdProducs.MultiSelect = false;
             this.grdProducs.Name = "grdProducs";
             this.grdProducs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdProducs.Size = new System.Drawing.Size(503, 400);
+            this.grdProducs.Size = new System.Drawing.Size(602, 400);
             this.grdProducs.TabIndex = 0;
             this.grdProducs.DoubleClick += new System.EventHandler(this.grdProducs_DoubleClick);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.grdWarehouse);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(608, 406);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Depo Tanımlamaları";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // grdWarehouse
             // 
@@ -152,15 +158,39 @@ namespace _29_OOP_DepoUygulamasi
             this.grdWarehouse.MultiSelect = false;
             this.grdWarehouse.Name = "grdWarehouse";
             this.grdWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdWarehouse.Size = new System.Drawing.Size(503, 400);
+            this.grdWarehouse.Size = new System.Drawing.Size(602, 400);
             this.grdWarehouse.TabIndex = 1;
             this.grdWarehouse.DoubleClick += new System.EventHandler(this.grdWarehouse_DoubleClick);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.grdWarehouseInOut);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(608, 406);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Depo Giriş ve Çıkış İşlemleri";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // grdWarehouseInOut
+            // 
+            this.grdWarehouseInOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdWarehouseInOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdWarehouseInOut.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdWarehouseInOut.Location = new System.Drawing.Point(3, 3);
+            this.grdWarehouseInOut.MultiSelect = false;
+            this.grdWarehouseInOut.Name = "grdWarehouseInOut";
+            this.grdWarehouseInOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdWarehouseInOut.Size = new System.Drawing.Size(602, 400);
+            this.grdWarehouseInOut.TabIndex = 2;
+            this.grdWarehouseInOut.DoubleClick += new System.EventHandler(this.grdWarehouseInOut_DoubleClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 510);
+            this.ClientSize = new System.Drawing.Size(616, 510);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -170,9 +200,11 @@ namespace _29_OOP_DepoUygulamasi
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdProducs)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdWarehouse)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdWarehouseInOut)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,6 +221,8 @@ namespace _29_OOP_DepoUygulamasi
         private System.Windows.Forms.DataGridView grdProducs;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView grdWarehouse;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView grdWarehouseInOut;
     }
 }
 

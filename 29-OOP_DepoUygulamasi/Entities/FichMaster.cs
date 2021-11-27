@@ -15,6 +15,7 @@ namespace _29_OOP_DepoUygulamasi.Entities
         public string TaxNumber { get; set; }
         public int WarehouseIn { get; set; }
         public int WarehouseOut { get; set; }
+        public DateTime Date { get; set; }
 
     }
 }

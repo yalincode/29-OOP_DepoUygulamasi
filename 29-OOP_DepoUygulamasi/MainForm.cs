@@ -1,5 +1,6 @@
 ﻿using _29_OOP_DepoUygulamasi.DAL;
 using _29_OOP_DepoUygulamasi.Entities;
+using _29_OOP_DepoUygulamasi.FakeDb;
 using _29_OOP_DepoUygulamasi.Helper;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,23 @@ namespace _29_OOP_DepoUygulamasi
 
         WarehouseRepository warehouseRepository;
 
+        FichMasterRepository fichMasterRepository;
+
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DummyData.Seed();//Örnek olması için içeriye depo ve ürünler basılıyor.
+            
             productRepository = new ProductRepository();
             warehouseRepository = new WarehouseRepository();
+            fichMasterRepository = new FichMasterRepository();
+
+            FillData();
+        }
+
+        private void FillData()
+        {
+            RefreshProducts();
+            RefreshWarehouse();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
@@ -91,6 +105,42 @@ namespace _29_OOP_DepoUygulamasi
                     form.ShowDialog();
 
                     RefreshWarehouse();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Utility.ShowErrorMessage(ex.Message);
+            }
+        }
+
+        private void btnWharehouseIn_Click(object sender, EventArgs e)
+        {
+            var form = new WarehouseInOutForm();
+            form.ShowDialog();
+            RefreshWarehouseInOutGrid();
+        }
+
+        public void RefreshWarehouseInOutGrid()
+        {
+            grdWarehouseInOut.DataSource = null;
+            grdWarehouseInOut.DataSource = fichMasterRepository.Get();
+        }
+
+        private void grdWarehouseInOut_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var items = grdWarehouseInOut.DataSource as List<FichMaster>;//Amaç database e gitmeden halletmek. Database i yormamak.
+                if (grdWarehouseInOut.SelectedRows.Count>0)
+                {
+                    int index = grdWarehouseInOut.SelectedRows[0].Index;
+                    int id = items[index].Id;
+                    WarehouseInOutForm form = new WarehouseInOutForm();
+                    form.Tag = id;
+                    form.ShowDialog();
+
+                    RefreshWarehouseInOutGrid();
                 }
             }
             catch (Exception ex)

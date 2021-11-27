@@ -15,5 +15,10 @@ namespace _29_OOP_DepoUygulamasi.Entities
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ProductCode} - {ProductName}";
+        }
     }
 }
