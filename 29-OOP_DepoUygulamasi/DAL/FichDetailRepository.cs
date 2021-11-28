@@ -27,6 +27,10 @@ namespace _29_OOP_DepoUygulamasi.Entities
         {
             return DepoDatabaseFakeDb.fichDetail;
         }
+        public List<FichDetail> Get(int fichId)
+        {
+            return DepoDatabaseFakeDb.fichDetail.Where(t0=>t0.FichId==fichId).ToList();
+        }
 
         public void Update(FichDetail item)
         {

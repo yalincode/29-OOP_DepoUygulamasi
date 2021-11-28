@@ -35,7 +35,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnNew = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grdWarehouseDetail = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@ namespace _29_OOP_DepoUygulamasi
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdWarehouseDetail)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nuCount)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +70,7 @@ namespace _29_OOP_DepoUygulamasi
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(972, 71);
+            this.panel1.Size = new System.Drawing.Size(1144, 71);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -91,18 +91,18 @@ namespace _29_OOP_DepoUygulamasi
             this.panel2.Location = new System.Drawing.Point(0, 71);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(972, 474);
+            this.panel2.Size = new System.Drawing.Size(1144, 447);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.grdWarehouseDetail);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 274);
+            this.panel3.Location = new System.Drawing.Point(0, 247);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(972, 271);
+            this.panel3.Size = new System.Drawing.Size(1144, 271);
             this.panel3.TabIndex = 2;
             // 
             // btnNew
@@ -138,15 +138,19 @@ namespace _29_OOP_DepoUygulamasi
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // dataGridView1
+            // grdWarehouseDetail
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 67);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(972, 204);
-            this.dataGridView1.TabIndex = 0;
+            this.grdWarehouseDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdWarehouseDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdWarehouseDetail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.grdWarehouseDetail.Location = new System.Drawing.Point(0, 67);
+            this.grdWarehouseDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdWarehouseDetail.MultiSelect = false;
+            this.grdWarehouseDetail.Name = "grdWarehouseDetail";
+            this.grdWarehouseDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdWarehouseDetail.Size = new System.Drawing.Size(1144, 204);
+            this.grdWarehouseDetail.TabIndex = 0;
+            this.grdWarehouseDetail.DoubleClick += new System.EventHandler(this.grdWarehouseDetail_DoubleClick);
             // 
             // label1
             // 
@@ -248,6 +252,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnDetailAdd.TabIndex = 1;
             this.btnDetailAdd.Text = "+";
             this.btnDetailAdd.UseVisualStyleBackColor = true;
+            this.btnDetailAdd.Click += new System.EventHandler(this.btnDetailAdd_Click);
             // 
             // panel4
             // 
@@ -258,7 +263,7 @@ namespace _29_OOP_DepoUygulamasi
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(972, 67);
+            this.panel4.Size = new System.Drawing.Size(1144, 67);
             this.panel4.TabIndex = 1;
             // 
             // cmbProduct
@@ -286,6 +291,7 @@ namespace _29_OOP_DepoUygulamasi
             this.btnDetailDelete.TabIndex = 4;
             this.btnDetailDelete.Text = "-";
             this.btnDetailDelete.UseVisualStyleBackColor = true;
+            this.btnDetailDelete.Click += new System.EventHandler(this.btnDetailDelete_Click);
             // 
             // cmbWarehouseOut
             // 
@@ -309,7 +315,7 @@ namespace _29_OOP_DepoUygulamasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 545);
+            this.ClientSize = new System.Drawing.Size(1144, 518);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -322,7 +328,7 @@ namespace _29_OOP_DepoUygulamasi
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdWarehouseDetail)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nuCount)).EndInit();
             this.ResumeLayout(false);
@@ -349,7 +355,7 @@ namespace _29_OOP_DepoUygulamasi
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grdWarehouseDetail;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnDetailDelete;
         private System.Windows.Forms.NumericUpDown nuCount;

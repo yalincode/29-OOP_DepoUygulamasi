@@ -24,13 +24,14 @@ namespace _29_OOP_DepoUygulamasi
         WarehouseRepository warehouseRepository;
         ProductRepository productRepository;
         FichMasterRepository fichMasterRepository;
+        FichDetailRepository fichDetailRepository;
 
         private void WarehouseInOutForm_Load(object sender, EventArgs e)
         {
             warehouseRepository = new WarehouseRepository();
             productRepository = new ProductRepository();
             fichMasterRepository = new FichMasterRepository();
-            
+            fichDetailRepository = new FichDetailRepository();
             FillForm();
             FillData();
         }
@@ -40,10 +41,10 @@ namespace _29_OOP_DepoUygulamasi
             try
             {
                 int id = Convert.ToInt32(this.Tag);
-                if (id>0)
+                if (id > 0)
                 {
                     FichMaster fichMaster = fichMasterRepository.FindById(id);
-                    if (fichMaster!=null)
+                    if (fichMaster != null)
                     {
                         txtCompanyName.Text = fichMaster.CompanyName;
                         txtFisNumber.Text = fichMaster.TaxNumber;
@@ -52,8 +53,10 @@ namespace _29_OOP_DepoUygulamasi
                         cmbWarehouseOut.SelectedIndex = FindWarehouseOutIndex(fichMaster.WarehouseOut);
                         cmbWarehouseIn.SelectedIndex = FindWareHouseInIndex(fichMaster.WarehouseIn);
                     }
+                    //Ekran master data yüklenirken detay data da yüklenir.
+                    RefreshWarehouseDetailGrid();
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -73,7 +76,7 @@ namespace _29_OOP_DepoUygulamasi
         {
             cmbProduct.Items.Clear();
             cmbProduct.Items.Insert(0, "Seçiniz");
-            List<Product> products = new List<Product>();
+            List<Product> products = productRepository.Get();
             foreach (var product in products)
             {
                 cmbProduct.Items.Add(product);
@@ -93,14 +96,14 @@ namespace _29_OOP_DepoUygulamasi
             cmbWarehouseOut.SelectedIndex = 0;
         }
 
-        private int FindWarehouseOutIndex(int id) 
+        private int FindWarehouseOutIndex(int id)
         {
             int index = 0;
 
             for (int i = 0; i < cmbWarehouseOut.Items.Count; i++)
             {
                 var warehouse = (cmbWarehouseOut.Items[i] as Warehouse);
-                if (warehouse!=null)
+                if (warehouse != null)
                 {
                     if (warehouse.id == id)
                     {
@@ -108,7 +111,7 @@ namespace _29_OOP_DepoUygulamasi
                         break;
                     }
                 }
-                
+
             }
             return index;
         }//ComboBox ın seçili olması için yapıyoruz update sırasında.
@@ -118,9 +121,9 @@ namespace _29_OOP_DepoUygulamasi
             for (int i = 0; i < cmbWarehouseIn.Items.Count; i++)
             {
                 var warehouse = cmbWarehouseIn.Items[i] as Warehouse;
-                if (warehouse!=null)
+                if (warehouse != null)
                 {
-                    if (warehouse.id==id)
+                    if (warehouse.id == id)
                     {
                         index = i;
                         break;
@@ -133,7 +136,7 @@ namespace _29_OOP_DepoUygulamasi
         private void FillWarehouseIn()
         {
             cmbWarehouseIn.Items.Clear();
-            cmbWarehouseIn.Items.Insert(0,"Seçiniz");
+            cmbWarehouseIn.Items.Insert(0, "Seçiniz");
 
 
             List<Warehouse> warehouses = warehouseRepository.Get();
@@ -205,6 +208,8 @@ namespace _29_OOP_DepoUygulamasi
                     //Update işlemi
                     fichMasterRepository.Update(fichMaster);
                 }
+                this.Tag = fichMaster.Id;
+
                 Utility.ShowSuccessMessage(ConstMessages.RecordSuccessMessage);
             }
             catch (Exception ex)
@@ -212,7 +217,7 @@ namespace _29_OOP_DepoUygulamasi
 
                 Utility.ShowSuccessMessage(ex.Message);
             }
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -220,10 +225,10 @@ namespace _29_OOP_DepoUygulamasi
             try
             {
                 int id = Convert.ToInt32(this.Tag);
-                if (id>0)
+                if (id > 0)
                 {
                     var result = Utility.ShowDialogResultInformationMessage(ConstMessages.RecordDeleteQuestionMessage);
-                    if (result==DialogResult.OK)
+                    if (result == DialogResult.OK)
                     {
                         fichMasterRepository.Delete(id);
                         this.Close();
@@ -234,6 +239,118 @@ namespace _29_OOP_DepoUygulamasi
             {
 
                 Utility.ShowErrorMessage(ex.Message);
+            }
+        }
+
+        #region Detay
+
+        int SelectedProductId;
+        private void btnDetailAdd_Click(object sender, EventArgs e)
+        {
+            int fichId = Convert.ToInt32(this.Tag);
+            if (fichId == 0)
+            {
+                Utility.ShowErrorMessage("Kayıt işlemi daha yapılmamış.Lütfen önce formu kaydedin");
+                return;
+            }
+            if (cmbProduct.SelectedIndex <= 0)
+            {
+                Utility.ShowErrorMessage("Lütfen ürün seçimi yapınız");
+            }
+            var fichDetail = new FichDetail();
+
+            fichDetail.Id = SelectedProductId;
+            fichDetail.Count = (int)Convert.ToSingle(nuCount.Value);
+            fichDetail.FichId = fichId;
+            fichDetail.ProductId = (cmbProduct.SelectedItem as Product).Id;
+
+            if (SelectedProductId==0)
+            {
+                fichDetailRepository.Add(fichDetail);
+            }
+            else
+            {
+                fichDetailRepository.Update(fichDetail);
+            }
+            RefreshWarehouseDetailGrid();
+            DetailProductClear();
+        }
+
+        public void DetailProductClear()
+        {
+            cmbProduct.SelectedIndex = 0;
+            nuCount.Value = 0;
+            SelectedProductId = 0;//Seçili olan ürün varsa onu sıfırla.
+        }
+        private void RefreshWarehouseDetailGrid()
+        {
+            int id = Convert.ToInt32(this.Tag);
+            grdWarehouseDetail.DataSource = null;
+            grdWarehouseDetail.DataSource = fichDetailRepository.Get(id);
+        }
+        private void grdWarehouseDetail_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var items = grdWarehouseDetail.DataSource as List<FichDetail>;
+                if (grdWarehouseDetail.SelectedRows.Count > 0)
+                {
+                    var item = items[grdWarehouseDetail.SelectedRows[0].Index];
+                    SetFicheDetailForm(item);
+                    SelectedProductId = item.Id;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Utility.ShowErrorMessage(ex.Message);
+
+            }
+        }
+
+        private void SetFicheDetailForm(FichDetail item)
+        {
+            cmbProduct.SelectedIndex = FindProductDataSourceIndex(item.ProductId);
+            nuCount.Value = Convert.ToDecimal(item.Count);
+        }
+
+        private int FindProductDataSourceIndex(int id)
+        {
+            int index = 0;
+            for (int i = 0; i < cmbProduct.Items.Count; i++)
+            {
+                var product = cmbProduct.Items[i] as Product;
+                if (product != null)
+                {
+                    if (product.Id == id)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+            return index;
+        }
+
+        #endregion
+
+        private void btnDetailDelete_Click(object sender, EventArgs e)
+        {
+            if (grdWarehouseDetail.SelectedRows.Count>0)
+            {
+                var result = Utility.ShowDialogResultInformationMessage(ConstMessages.RecordDeleteQuestionMessage);
+                if (result==DialogResult.OK)
+                {
+                    var items = grdWarehouseDetail.DataSource as List<FichDetail>;
+                    int index = grdWarehouseDetail.SelectedRows[0].Index;
+                    var item = items[index];
+                    if (item!=null)
+                    {
+                        fichDetailRepository.Delete(item.Id);
+                        Utility.ShowSuccessMessage(ConstMessages.RecordSuccessMessage);
+                    }
+                    RefreshWarehouseDetailGrid();
+                }
             }
         }
     }

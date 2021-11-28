@@ -1,4 +1,5 @@
 ﻿using _29_OOP_DepoUygulamasi.DAL;
+using _29_OOP_DepoUygulamasi.DTO_DataTransferObject_.VM;
 using _29_OOP_DepoUygulamasi.Entities;
 using _29_OOP_DepoUygulamasi.FakeDb;
 using _29_OOP_DepoUygulamasi.Helper;
@@ -124,14 +125,52 @@ namespace _29_OOP_DepoUygulamasi
         public void RefreshWarehouseInOutGrid()
         {
             grdWarehouseInOut.DataSource = null;
-            grdWarehouseInOut.DataSource = fichMasterRepository.Get();
+            grdWarehouseInOut.DataSource = GetVmFichMaster(fichMasterRepository.Get());
+            GridWarehouseInOutColumnVisibility();
+        }
+
+        private void GridWarehouseInOutColumnVisibility()
+        {
+            //Kapatalıcak kolonları yaptık.
+            grdWarehouseInOut.Columns["Id"].Visible = false;
+            grdWarehouseInOut.Columns["WarehouseInId"].Visible = false;
+            grdWarehouseInOut.Columns["WarehouseOutId"].Visible = false;
+
+            //Harder Text Bilgilerini ayarladık.
+            grdWarehouseInOut.Columns["CompanyName"].HeaderText = "Şirket Adı";
+            grdWarehouseInOut.Columns["TaxNumber"].HeaderText = "VKN";
+            grdWarehouseInOut.Columns["Date"].HeaderText = "Tarih";
+            grdWarehouseInOut.Columns["FichNumber"].HeaderText = "Fiş Numarası";
+            grdWarehouseInOut.Columns["WarehouseInName"].HeaderText = "Giriş Deposu";
+            grdWarehouseInOut.Columns["WarehouseOutName"].HeaderText = "Çıkış Deposu";
+        }
+
+        public List<VMFichMaster> GetVmFichMaster(List<FichMaster> fiches)
+        {
+            List<VMFichMaster> vMFichMasters = new List<VMFichMaster>();
+            foreach (var item in fiches)
+            {
+                var vMFichMaster = new VMFichMaster();
+                vMFichMaster.CompanyName = item.CompanyName;
+                vMFichMaster.Date = item.Date;
+                vMFichMaster.FichNumber = item.FichNumber;
+                vMFichMaster.Id = item.Id;
+                vMFichMaster.TaxNumber = item.TaxNumber;
+                vMFichMaster.WarehouseInId = item.WarehouseIn;
+                vMFichMaster.WarehouseInName = warehouseRepository.FindById(item.WarehouseIn) ?. WarehouseName;//Null dan farklıysa soru işaretinden sonrasına devam et.
+                vMFichMaster.WarehouseOutId = item.WarehouseOut;
+                vMFichMaster.WarehouseOutName = warehouseRepository.FindById(item.WarehouseOut)?.WarehouseName;
+
+                vMFichMasters.Add(vMFichMaster);
+            }
+            return vMFichMasters;
         }
 
         private void grdWarehouseInOut_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                var items = grdWarehouseInOut.DataSource as List<FichMaster>;//Amaç database e gitmeden halletmek. Database i yormamak.
+                var items = grdWarehouseInOut.DataSource as List<VMFichMaster>;//Amaç database e gitmeden halletmek. Database i yormamak.
                 if (grdWarehouseInOut.SelectedRows.Count>0)
                 {
                     int index = grdWarehouseInOut.SelectedRows[0].Index;

@@ -60,7 +60,7 @@ namespace _29_OOP_DepoUygulamasi
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(616, 78);
+            this.panel1.Size = new System.Drawing.Size(854, 78);
             this.panel1.TabIndex = 0;
             // 
             // btnWharehouseOut
@@ -111,7 +111,7 @@ namespace _29_OOP_DepoUygulamasi
             this.tabControl1.Location = new System.Drawing.Point(0, 78);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(616, 432);
+            this.tabControl1.Size = new System.Drawing.Size(854, 513);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -168,7 +168,7 @@ namespace _29_OOP_DepoUygulamasi
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(608, 406);
+            this.tabPage3.Size = new System.Drawing.Size(846, 487);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Depo Giriş ve Çıkış İşlemleri";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@ namespace _29_OOP_DepoUygulamasi
             this.grdWarehouseInOut.MultiSelect = false;
             this.grdWarehouseInOut.Name = "grdWarehouseInOut";
             this.grdWarehouseInOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdWarehouseInOut.Size = new System.Drawing.Size(602, 400);
+            this.grdWarehouseInOut.Size = new System.Drawing.Size(840, 481);
             this.grdWarehouseInOut.TabIndex = 2;
             this.grdWarehouseInOut.DoubleClick += new System.EventHandler(this.grdWarehouseInOut_DoubleClick);
             // 
@@ -190,7 +190,7 @@ namespace _29_OOP_DepoUygulamasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 510);
+            this.ClientSize = new System.Drawing.Size(854, 591);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";

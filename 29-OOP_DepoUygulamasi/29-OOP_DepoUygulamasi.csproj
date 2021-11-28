@@ -50,6 +50,7 @@
     <Compile Include="DAL\ProductRepository.cs" />
     <Compile Include="DAL\FichMasterRepository.cs" />
     <Compile Include="DAL\WarehouseRepository.cs" />
+    <Compile Include="DTO%28DataTransferObject%29\VM\VMFichMaster.cs" />
     <Compile Include="Entities\FichDetail.cs" />
     <Compile Include="DAL\FichDetailRepository.cs" />
     <Compile Include="Entities\FichMaster.cs" />
